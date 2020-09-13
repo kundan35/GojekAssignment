@@ -7,7 +7,7 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
-abstract class ViewModelFactory
+class ViewModelFactory
 @Inject
 constructor(
     private val creators: Map<Class<out ViewModel>,

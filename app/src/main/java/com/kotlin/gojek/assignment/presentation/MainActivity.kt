@@ -1,12 +1,20 @@
 package com.kotlin.gojek.assignment.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import com.kotlin.gojek.assignment.R
+import com.kotlin.gojek.assignment.databinding.ActivityMainBinding
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+    private lateinit var activityMainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding =
+            DataBindingUtil.setContentView(
+                this,
+                R.layout.activity_main
+            )
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GojekAssignment</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="github_repo_fragment_label">GitHub Repo Fragment</string>
 </resources>
