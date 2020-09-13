@@ -1,7 +1,8 @@
-package com.kotlin.gojek.assignment
+package com.kotlin.gojek.assignment.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kotlin.gojek.assignment.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
