@@ -1,4 +1,21 @@
 package com.kotlin.gojek.assignment
 
-class MainApplication {
+import android.app.Activity
+import android.app.Application
+
+class MainApplication : Application(), HasActivityInjector{
+    @Inject
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+
+    override fun onCreate() {
+        super.onCreate()
+        DaggerAppComponent
+            .builder()
+            .application(this)
+            .build()
+            .inject(this)
+
+    }
+
+    override fun activityInjector() = activityInjector
 }
