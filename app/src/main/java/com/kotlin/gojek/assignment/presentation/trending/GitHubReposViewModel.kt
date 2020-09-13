@@ -1,4 +1,6 @@
 package com.kotlin.gojek.assignment.presentation.trending
 
-class GitHubReposViewModel {
+import androidx.lifecycle.ViewModel
+
+class GitHubReposViewModel : ViewModel() {
 }
