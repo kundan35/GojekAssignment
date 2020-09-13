@@ -2,6 +2,7 @@ package com.kotlin.gojek.assignment
 
 import android.app.Activity
 import android.app.Application
+import javax.inject.Inject
 
 class MainApplication : Application(), HasActivityInjector{
     @Inject
