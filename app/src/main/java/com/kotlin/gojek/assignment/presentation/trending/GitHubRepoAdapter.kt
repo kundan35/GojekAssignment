@@ -1,16 +1,20 @@
 package com.kotlin.gojek.assignment.presentation.trending
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.kotlin.gojek.assignment.R
 import com.kotlin.gojek.assignment.data.model.vo.GitHubRepoVO
 import com.kotlin.gojek.assignment.databinding.HolderGithubRepoBinding
 import com.kotlin.gojek.assignment.loadImage
 import com.kotlin.gojek.assignment.presentation.trending.GitHubRepoAdapter.GitHubRepoViewHolder
+import net.cachapa.expandablelayout.ExpandableLayout
 import java.util.*
+
 
 /**
  * This class is responsible for converting each data entry [GitHubRepoVO]
@@ -22,7 +26,8 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
 
     private val TAG = GitHubRepoAdapter::class.java.name
     private val githubReposList: MutableList<GitHubRepoVO> = ArrayList()
-
+    private val UNSELECTED = -1
+    private var selectedItem = UNSELECTED
 
     /**
      * This method is called right when adapter is created &
@@ -61,7 +66,7 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
 
 
     inner class GitHubRepoViewHolder(private val dataBinding: ViewDataBinding) :
-        RecyclerView.ViewHolder(dataBinding.root) {
+        RecyclerView.ViewHolder(dataBinding.root), ExpandableLayout.OnExpansionUpdateListener{
 
 
         fun onBind(gitHubRepoVO: GitHubRepoVO) {
@@ -74,9 +79,28 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
                 )
             }
             itemView.setOnClickListener {
+                if (holder != null) {
+                    dataBinding.expandButton.setSelected(false)
+                    holder.expandableLayout.collapse()
+                }
 
+                val position = adapterPosition
+                selectedItem = if (position == selectedItem) {
+                    UNSELECTED
+                } else {
+                    expandButton.setSelected(true)
+                    expandableLayout.expand()
+                    position
+                }
             }
 
+        }
+
+
+        override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
+            if (state == ExpandableLayout.State.EXPANDING) {
+                //this.smoothScrollToPosition(getAdapterPosition());
+            }
         }
     }
 

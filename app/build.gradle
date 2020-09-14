@@ -107,4 +107,6 @@ dependencies {
     // picaso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+
 }
