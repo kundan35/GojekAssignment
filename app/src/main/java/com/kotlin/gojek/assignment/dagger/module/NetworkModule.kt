@@ -1,10 +1,14 @@
 package com.kotlin.gojek.assignment.dagger.module
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import com.google.gson.Gson
 import com.kotlin.gojek.assignment.data.RemoteConstants.BASE_URL
+import com.kotlin.gojek.assignment.data.TrendingRepository
+import com.kotlin.gojek.assignment.data.TrendingRepositoryImpl
+import com.kotlin.gojek.assignment.data.source.AppDatabase
 import com.kotlin.gojek.assignment.data.source.remote.RetrofitService
 import dagger.Module
 import dagger.Provides
@@ -105,6 +109,16 @@ class NetworkModule {
     @Provides
     fun provideService(retrofit: Retrofit): RetrofitService {
         return retrofit.create(RetrofitService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTrendingRepository(
+        sharedPreference: SharedPreferences,
+        appDatabase: AppDatabase,
+        retrofitService: RetrofitService
+    ): TrendingRepository {
+        return TrendingRepositoryImpl(sharedPreference,appDatabase,retrofitService)
     }
 
 }

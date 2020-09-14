@@ -4,7 +4,7 @@ import com.kotlin.gojek.assignment.data.model.response.GitHubRepoResponse
 import com.kotlin.gojek.assignment.data.source.local.entity.GitHubRepoEntity
 
 object DBGitHubRepoMapper {
-    fun from(gitHubRepoResponse: GitHubRepoResponse): GitHubRepoEntity? {
+    fun from(gitHubRepoResponse: GitHubRepoResponse): GitHubRepoEntity {
         return GitHubRepoEntity(
             gitHubRepoResponse.id,
             gitHubRepoResponse.author,
