@@ -10,6 +10,6 @@ class TrendingUseCase @Inject constructor(private val trendingRepository: Trendi
     SingleUseCase<List<GitHubRepoVO>>() {
 
     override fun buildUseCaseSingle(): Single<List<GitHubRepoVO>> {
-        return trendingRepository.getGitHubProjectIssues(orgName, repoName, state)
+        return trendingRepository.getGitHubRepos("daily")
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -25,6 +26,19 @@
             android:layout_marginEnd="@dimen/card_margin"
             android:layout_marginBottom="@dimen/card_margin">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_view"
+                android:layout_width="70dp"
+                android:layout_gravity="center"
+                android:layout_height="70dp"
+                android:tint="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorPrimary"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
             <TextView
                 android:id="@+id/user_name_text_view"
                 android:layout_width="wrap_content"
@@ -32,10 +46,10 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/label"
                 android:textStyle="bold"
+                android:text="@{gitHubRepoViewModel.gitHubRepoVO.author}"
                 app:layout_constraintBottom_toBottomOf="@+id/repo_name_text_view"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/repo_name_text_view"
@@ -44,7 +58,8 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/label"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{gitHubRepoViewModel.gitHubRepoVO.name}"
+                app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                 app:layout_constraintTop_toBottomOf="@+id/user_name_text_view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

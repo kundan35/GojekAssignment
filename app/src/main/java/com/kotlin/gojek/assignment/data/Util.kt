@@ -5,7 +5,7 @@ import java.util.*
 
 object Util {
     fun dateGreaterThanExpireTime(
-        sharedPreferences: SharedPreferences,
+        sharedPreferences: SharedPreferences
     ): Boolean {
         try {
             val fetchTime: Long = sharedPreferences.getLong("lastDw", 0L)

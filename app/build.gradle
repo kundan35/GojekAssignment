@@ -16,6 +16,7 @@ android {
         dataBinding {
             enabled = true
         }
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -100,8 +101,10 @@ dependencies {
 
     // other libraries
     implementation "org.jetbrains.anko:anko:$anko_version"
-    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
 
-
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    // picaso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

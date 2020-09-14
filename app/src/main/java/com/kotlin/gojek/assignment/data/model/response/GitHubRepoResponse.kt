@@ -9,7 +9,7 @@ data class GitHubRepoResponse(
     val avatar: String,
     val stars: String,
     val forks: String,
-    val language: String
+    val language: String?
 
 )
 

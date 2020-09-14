@@ -78,11 +78,11 @@ class TrendingRepositoryImpl(
                     item.id,
                     item.author,
                     item.name,
-                    item.avatar,
-                    item.forks,
-                    item.language,
                     item.description,
-                    item.stars
+                    item.avatar,
+                    item.stars,
+                    item.forks,
+                    item.language
                 )
             githubReposVOList.add(githubRepoVO)
         }

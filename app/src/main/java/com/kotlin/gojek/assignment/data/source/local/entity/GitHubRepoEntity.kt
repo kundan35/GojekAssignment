@@ -6,13 +6,13 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "GitHubRepos")
 data class GitHubRepoEntity(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long,
     val author: String,
     val name: String,
     val description: String,
     val avatar: String,
-    val stars: String,
+    val stars: String?,
     val forks: String,
-    val language: String
+    val language: String?
     )

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kotlin.gojek.assignment.R
+import com.kotlin.gojek.assignment.data.model.vo.GitHubRepoVO
 import com.kotlin.gojek.assignment.databinding.FragmentGithubRepoBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class GitHubRepoFragment : DaggerFragment(), OnGitHubRepoAdapterListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = GitHubRepoAdapter(this)
-        //viewModel.getGitHubIssues(it, it1, "open")
+        viewModel.getGitHubRepo()
     }
 
     override fun onCreateView(
@@ -47,29 +48,29 @@ class GitHubRepoFragment : DaggerFragment(), OnGitHubRepoAdapterListener {
 
         viewModel.isLoad.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let { visibility ->
-                if(visibility) {
+                if (visibility) {
                     fragmentGithubRepoBinding.githubRepoProgressBar.visibility =
                         View.GONE
-                }else{
-                    fragmentGithubRepoBinding.githubRepoProgressBar.visibility =  View.VISIBLE
+                } else {
+                    fragmentGithubRepoBinding.githubRepoProgressBar.visibility = View.VISIBLE
                 }
             }
         })
 
-        viewModel.projectIssueLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.githubRepoLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 initRecyclerView(it)
             }
         })
 
         viewModel.errMsgLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            Toast.makeText(context,it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
 
     }
 
-    private fun initRecyclerView(projectIssuesVO: List<ProjectIssuesVO>) {
-        adapter?.addData(projectIssuesVO)
+    private fun initRecyclerView(gitHubRepoVOList: List<GitHubRepoVO>) {
+        adapter?.addData(gitHubRepoVOList)
     }
 
     override fun onDetach() {
