@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/no_internet_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:visibility="gone"
+        android:paddingBottom="@dimen/dp_16">
+
+        <ImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:background="@mipmap/nointernet_connection"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/no_internet_msg1_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:text="@string/no_internet_msg_1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/no_internet_bold_text"
+            fontPath="fonts/Roboto-Bold.ttf"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_view"
+            />
+
+        <TextView
+            android:id="@+id/no_internet_msg2_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/no_internet_msg_2"
+            android:textColor="@color/text"
+            android:textSize="@dimen/no_internet_regular_text"
+            fontPath="fonts/Roboto-Regular.ttf"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/no_internet_msg1_text_view" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/retry_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="@string/btn_retry"
+            android:textColor="@color/green"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="4dp"
+            app:rippleColor="@android:color/transparent"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp"
+            android:textSize="@dimen/no_internet_regular_text"
+            fontPath="fonts/Roboto-Medium.ttf"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

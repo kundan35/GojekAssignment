@@ -51,6 +51,7 @@ class GitHubRepoFragment : DaggerFragment(), OnGitHubRepoAdapterListener {
                 if (visibility) {
                     fragmentGithubRepoBinding.githubRepoProgressBar.visibility =
                         View.GONE
+                    fragmentGithubRepoBinding.noInternetLayout.noInternetConstraintLayout.visibility = View.GONE
                 } else {
                     fragmentGithubRepoBinding.githubRepoProgressBar.visibility = View.VISIBLE
                 }
@@ -65,6 +66,7 @@ class GitHubRepoFragment : DaggerFragment(), OnGitHubRepoAdapterListener {
 
         viewModel.errMsgLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            fragmentGithubRepoBinding.noInternetLayout.noInternetConstraintLayout.visibility = View.VISIBLE
         })
 
     }
