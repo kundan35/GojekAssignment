@@ -9,7 +9,15 @@ import javax.inject.Inject
 class TrendingUseCase @Inject constructor(private val trendingRepository: TrendingRepository) :
     SingleUseCase<List<GitHubRepoVO>>() {
 
+    private var isRefresh: Boolean = false
+    private var since: String = "daily"
+    private var state: String = ""
+
+    fun setIsRefresh(isRefresh: Boolean) {
+       this.isRefresh = isRefresh
+    }
+
     override fun buildUseCaseSingle(): Single<List<GitHubRepoVO>> {
-        return trendingRepository.getGitHubRepos("daily")
+        return trendingRepository.getGitHubRepos(isRefresh,since)
     }
 }

@@ -20,8 +20,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp"
             android:background="@color/colorPrimary"
+            app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
             tools:ignore="MissingConstraints">
 
@@ -48,18 +48,19 @@
 
                 <TextView
                     android:id="@+id/author_text_view"
+                    fontPath="fonts/Roboto-Regular.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_16"
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.author}"
                     android:textColor="@color/text"
                     android:textSize="@dimen/regular_text"
-                    fontPath="fonts/Roboto-Regular.ttf"
                     app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/name_text_view"
+                    fontPath="fonts/Roboto-Medium.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_16"
@@ -67,12 +68,12 @@
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.name}"
                     android:textColor="@color/text"
                     android:textSize="@dimen/medium_text"
-                    fontPath="fonts/Roboto-Medium.ttf"
                     app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/author_text_view" />
 
                 <TextView
                     android:id="@+id/desc_text_view"
+                    fontPath="fonts/PingFang-SC-Regular.ttf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_16"
@@ -80,7 +81,6 @@
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.description}"
                     android:textColor="@color/text"
                     android:textSize="@dimen/regular_text"
-                    fontPath="fonts/PingFang-SC-Regular.ttf"
                     android:visibility="gone"
                     app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/name_text_view" />
@@ -89,21 +89,21 @@
                     android:id="@+id/language_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:src="@drawable/ic_circle"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/desc_text_view"
-                    android:visibility="gone"
-                    tools:ignore="MissingConstraints"
-                    />
+                    tools:ignore="MissingConstraints" />
+
                 <TextView
                     android:id="@+id/language_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.language}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/medium_text"
@@ -117,21 +117,21 @@
                     android:id="@+id/stars_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:src="@mipmap/ic_star"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/language_text_view"
                     app:layout_constraintTop_toBottomOf="@+id/desc_text_view"
-                    android:visibility="gone"
-                    tools:ignore="MissingConstraints"
-                    />
+                    tools:ignore="MissingConstraints" />
+
                 <TextView
                     android:id="@+id/stars_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.stars}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/medium_text"
@@ -145,21 +145,21 @@
                     android:id="@+id/fork_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:background="@mipmap/ic_fork"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/stars_text_view"
                     app:layout_constraintTop_toBottomOf="@+id/desc_text_view"
-                    android:visibility="gone"
-                    tools:ignore="MissingConstraints"
-                    />
+                    tools:ignore="MissingConstraints" />
+
                 <TextView
                     android:id="@+id/forks_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_8"
                     android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
                     android:text="@{gitHubRepoViewModel.gitHubRepoVO.forks}"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/medium_text"
@@ -180,8 +180,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp"
             android:background="@color/colorPrimary"
+            app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
             tools:ignore="MissingConstraints" />
 

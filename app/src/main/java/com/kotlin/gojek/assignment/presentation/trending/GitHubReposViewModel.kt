@@ -17,7 +17,8 @@ class GitHubReposViewModel @Inject constructor(private val trendingUseCase: Tren
         isLoad.value = false
     }
 
-    fun getGitHubRepo() {
+    fun getGitHubRepo(isRefresh: Boolean) {
+       trendingUseCase.setIsRefresh(isRefresh)
         trendingUseCase.execute(
             onSuccess = {
                 isLoad.value = true

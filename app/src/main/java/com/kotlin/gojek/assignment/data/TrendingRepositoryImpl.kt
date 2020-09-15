@@ -19,11 +19,13 @@ class TrendingRepositoryImpl(
     private val retrofitService: RetrofitService
 ) : TrendingRepository {
     override fun getGitHubRepos(
+        isRefresh: Boolean,
         since: String
     ): Single<List<GitHubRepoVO>> {
+
         val gitHubReposEntityList: MutableList<GitHubRepoEntity> =
             database.githubRepoDao.loadAll()
-        return if (!gitHubReposEntityList.isNullOrEmpty() && Util.dateGreaterThanExpireTime(
+        return if (!isRefresh && !gitHubReposEntityList.isNullOrEmpty() && Util.dateGreaterThanExpireTime(
                 sharedPreference
             )
         ) {
@@ -56,6 +58,7 @@ class TrendingRepositoryImpl(
     ) {
         val iterator = githubRepoResponseList.listIterator()
         val githubRepoDao: GitHubRepoDao = database.githubRepoDao
+        githubRepoDao.deleteAll()
         for (item in iterator) {
             val githubRepoEntity: GitHubRepoEntity = DBGitHubRepoMapper.from(item)
             githubRepoDao.insert(githubRepoEntity)

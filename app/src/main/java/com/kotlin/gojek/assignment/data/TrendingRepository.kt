@@ -8,6 +8,7 @@ import io.reactivex.Single
  * */
 interface TrendingRepository {
     fun getGitHubRepos(
+        isRefresh: Boolean,
         since: String
     ): Single<List<GitHubRepoVO>>
 }

@@ -13,4 +13,7 @@ interface GitHubRepoDao {
 
     @Query("SELECT * FROM GitHubRepos")
     fun loadAll(): MutableList<GitHubRepoEntity>
+
+    @Query("DELETE FROM GitHubRepos")
+    fun deleteAll()
 }

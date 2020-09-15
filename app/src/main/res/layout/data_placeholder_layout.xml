@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp">
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image_view"
+            android:layout_width="@dimen/profile_img_dp_48"
+            android:layout_height="@dimen/profile_img_dp_48"
+            android:src="@color/background"
+            android:tint="@color/colorPrimary"
+            app:civ_border_color="@color/colorBlack"
+            app:civ_border_width="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/name_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <View
-            android:id="@+id/thumbnail"
-            android:layout_width="@dimen/placeholderImage"
-            android:layout_height="@dimen/placeholderImage"
-            android:layout_marginTop="@dimen/padding_10"
-            android:layout_marginRight="@dimen/activityPadding"
-            android:background="@color/background" />
+            android:id="@+id/author_text_view"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/placeholderTextHeight"
+            android:layout_marginStart="@dimen/dp_16"
+            android:background="@color/background"
+            app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <View
+            android:id="@+id/name_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_10"
-            android:layout_toRightOf="@id/thumbnail"
-            android:orientation="vertical">
+            android:layout_height="@dimen/placeholderTextHeight"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_36"
+            android:background="@color/background"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:layout_constraintLeft_toRightOf="@+id/profile_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/author_text_view" />
 
-            <View
-                android:layout_width="100dp"
-                android:layout_height="@dimen/placeholderTextHeight"
-                android:background="@color/background" />
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_text_view" />
 
-            <View
-                android:layout_width="30dp"
-                android:layout_height="@dimen/placeholderTextHeight"
-                android:layout_marginTop="5dp"
-                android:background="@color/background" />
-        </LinearLayout>
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

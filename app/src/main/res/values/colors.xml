@@ -8,4 +8,5 @@
     <color name="text">#52575C</color>
     <color name="green">#31B057</color>
     <color name="background">#dddddd</color>
+    <color name="header">#25282B</color>
 </resources>
