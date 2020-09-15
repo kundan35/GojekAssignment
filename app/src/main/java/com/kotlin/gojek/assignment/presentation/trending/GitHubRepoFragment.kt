@@ -49,11 +49,16 @@ class GitHubRepoFragment : DaggerFragment(), OnGitHubRepoAdapterListener {
         viewModel.isLoad.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let { visibility ->
                 if (visibility) {
-                    fragmentGithubRepoBinding.githubRepoProgressBar.visibility =
-                        View.GONE
+
                     fragmentGithubRepoBinding.noInternetLayout.noInternetConstraintLayout.visibility = View.GONE
+                    fragmentGithubRepoBinding.shimmerViewContainer.stopShimmerAnimation()
+                    fragmentGithubRepoBinding.shimmerViewContainer.visibility=View.GONE
                 } else {
-                    fragmentGithubRepoBinding.githubRepoProgressBar.visibility = View.VISIBLE
+
+                    fragmentGithubRepoBinding.shimmerViewContainer.duration = 800
+                    fragmentGithubRepoBinding.shimmerViewContainer.startShimmerAnimation()
+                    fragmentGithubRepoBinding.shimmerViewContainer.visibility=View.VISIBLE
+
                 }
             }
         })

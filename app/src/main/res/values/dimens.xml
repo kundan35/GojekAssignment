@@ -18,4 +18,9 @@
     <dimen name="dp_8">8dp</dimen>
 
     <dimen name="profile_img_dp_48">48dp</dimen>
+
+    <dimen name="activityPadding">16dp</dimen>
+    <dimen name="placeholderImage">60dp</dimen>
+    <dimen name="placeholderTextHeight">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
 </resources>
