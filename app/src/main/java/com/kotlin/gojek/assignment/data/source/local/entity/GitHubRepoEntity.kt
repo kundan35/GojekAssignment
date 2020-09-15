@@ -12,7 +12,7 @@ data class GitHubRepoEntity(
     val name: String,
     val description: String,
     val avatar: String,
-    val stars: String?,
+    val language: String?,
     val forks: String,
-    val language: String?
+    val stars: String
     )

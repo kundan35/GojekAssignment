@@ -3,11 +3,15 @@
     <dimen name="card_margin">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="issue_card_width_size">160dp</dimen>
-    <dimen name="label">17sp</dimen><!--Black 87%-->
-    <dimen name="value">15sp</dimen>
+    <dimen name="medium_text">15sp</dimen>
+    <dimen name="regular_text">12sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="margin_16">16dp</dimen>
-
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_21">21dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="profile_img_dp_48">48dp</dimen>
 </resources>

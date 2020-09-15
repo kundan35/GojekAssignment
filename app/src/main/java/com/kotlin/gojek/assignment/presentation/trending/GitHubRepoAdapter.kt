@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.kotlin.gojek.assignment.R
 import com.kotlin.gojek.assignment.data.model.vo.GitHubRepoVO
 import com.kotlin.gojek.assignment.databinding.HolderGithubRepoBinding
 import com.kotlin.gojek.assignment.loadImage
+import com.kotlin.gojek.assignment.presentation.custom.ExpandableLayout
 import com.kotlin.gojek.assignment.presentation.trending.GitHubRepoAdapter.GitHubRepoViewHolder
-import net.cachapa.expandablelayout.ExpandableLayout
+import kotlinx.android.synthetic.main.holder_github_repo.view.*
 import java.util.*
 
 
@@ -26,8 +26,10 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
 
     private val TAG = GitHubRepoAdapter::class.java.name
     private val githubReposList: MutableList<GitHubRepoVO> = ArrayList()
-    private val UNSELECTED = -1
-    private var selectedItem = UNSELECTED
+
+    // Save the expanded row position
+    private val expandedPositionSet: HashSet<Int> = HashSet()
+    private var selectedPost: Int = -1
 
     /**
      * This method is called right when adapter is created &
@@ -66,7 +68,7 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
 
 
     inner class GitHubRepoViewHolder(private val dataBinding: ViewDataBinding) :
-        RecyclerView.ViewHolder(dataBinding.root), ExpandableLayout.OnExpansionUpdateListener{
+        RecyclerView.ViewHolder(dataBinding.root) {
 
 
         fun onBind(gitHubRepoVO: GitHubRepoVO) {
@@ -75,32 +77,44 @@ internal class GitHubRepoAdapter(val mListener: OnGitHubRepoAdapterListener) :
             holderGithubRepoBinding.gitHubRepoViewModel = githubRepoViewModel
             gitHubRepoVO.avatar?.let {
                 holderGithubRepoBinding.profileImageView.loadImage(
-                     gitHubRepoVO.avatar
+                    gitHubRepoVO.avatar
                 )
             }
-            itemView.setOnClickListener {
-                if (holder != null) {
-                    dataBinding.expandButton.setSelected(false)
-                    holder.expandableLayout.collapse()
+            // Expand when you click on cell
+            itemView.expand_layout.setOnExpandListener(object :
+                ExpandableLayout.OnExpandListener {
+                override fun onExpand(expanded: Boolean) {
+                    if (expandedPositionSet.contains(position)) {
+                        expandedPositionSet.remove(position)
+                    } else {
+                        if (selectedPost != -1) {
+                            expandedPositionSet.remove(selectedPost)
+                        }
+                        selectedPost = position
+                        expandedPositionSet.add(position)
+                    }
+                    itemView.expand_layout.setExpand(expandedPositionSet.contains(position))
+                    if (expanded) {
+                        itemView.language_text_view.visibility = View.VISIBLE
+                        itemView.desc_text_view.visibility = View.VISIBLE
+                        itemView.language_image_view.visibility = View.VISIBLE
+                        itemView.stars_image_view.visibility = View.VISIBLE
+                        itemView.stars_text_view.visibility=View.VISIBLE
+                        itemView.fork_image_view.visibility=View.VISIBLE
+                        itemView.forks_text_view.visibility=View.VISIBLE
+                    } else {
+                        itemView.language_text_view.visibility = View.GONE
+                        itemView.desc_text_view.visibility = View.GONE
+                        itemView.language_image_view.visibility = View.GONE
+                        itemView.stars_image_view.visibility = View.GONE
+                        itemView.stars_text_view.visibility=View.GONE
+                        itemView.fork_image_view.visibility=View.GONE
+                        itemView.forks_text_view.visibility=View.GONE
+                    }
                 }
-
-                val position = adapterPosition
-                selectedItem = if (position == selectedItem) {
-                    UNSELECTED
-                } else {
-                    expandButton.setSelected(true)
-                    expandableLayout.expand()
-                    position
-                }
-            }
-
-        }
+            })
 
 
-        override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
-            if (state == ExpandableLayout.State.EXPANDING) {
-                //this.smoothScrollToPosition(getAdapterPosition());
-            }
         }
     }
 
