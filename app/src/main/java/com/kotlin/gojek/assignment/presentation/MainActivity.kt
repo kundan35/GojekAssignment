@@ -23,6 +23,10 @@ class MainActivity : DaggerAppCompatActivity() {
                 R.layout.activity_main
             )
         setSupportActionBar(findViewById(R.id.toolbar))
+        initUI()
+    }
+
+    private fun initUI() {
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
             val mTitleTextView = AppCompatTextView(applicationContext)
@@ -37,10 +41,8 @@ class MainActivity : DaggerAppCompatActivity() {
             actionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
             mTitleTextView.text = getString(R.string.trending)
             mTitleTextView.setTextColor(ContextCompat.getColor(applicationContext, R.color.header))
-            //mTitleTextView.textSize = R.dimen.header.toFloat()
-
+            mTitleTextView.textSize = 21.0F
         }
-
     }
 
     override fun attachBaseContext(base: Context) {

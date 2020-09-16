@@ -34,7 +34,7 @@ class MainApplication : Application(), HasActivityInjector {
                 .addInterceptor(
                     CalligraphyInterceptor(
                         CalligraphyConfig.Builder()
-                            .setDefaultFontPath("fonts/Roboto-RobotoMedium.ttf")
+                            .setDefaultFontPath("fonts/Roboto-Medium.ttf")
                             .setFontAttrId(R.attr.fontPath)
                             .build()
                     )
