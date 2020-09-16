@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("repositories")
-    fun getGithubProjectIssues(@Query("since") since: String): Single<List<GitHubRepoResponse>>
+    fun getTrendingGithubRepos(@Query("since") since: String): Single<List<GitHubRepoResponse>>
 }

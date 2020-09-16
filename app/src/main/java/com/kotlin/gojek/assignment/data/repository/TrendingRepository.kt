@@ -1,4 +1,4 @@
-package com.kotlin.gojek.assignment.data
+package com.kotlin.gojek.assignment.data.repository
 
 import com.kotlin.gojek.assignment.data.model.vo.GitHubRepoVO
 import io.reactivex.Single

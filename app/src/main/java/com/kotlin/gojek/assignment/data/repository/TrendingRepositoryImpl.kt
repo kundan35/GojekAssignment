@@ -1,6 +1,7 @@
-package com.kotlin.gojek.assignment.data
+package com.kotlin.gojek.assignment.data.repository
 
 import android.content.SharedPreferences
+import com.kotlin.gojek.assignment.data.Util
 import com.kotlin.gojek.assignment.data.mapper.DBGitHubRepoMapper
 import com.kotlin.gojek.assignment.data.model.response.GitHubRepoResponse
 import com.kotlin.gojek.assignment.data.model.vo.GitHubRepoVO
@@ -32,7 +33,7 @@ class TrendingRepositoryImpl(
             getGitHubReposFromLocalSource()
         } else {
             val singleGitHubRepoResponse: Single<List<GitHubRepoResponse>> =
-                retrofitService.getGithubProjectIssues(since);
+                retrofitService.getTrendingGithubRepos(since);
             return execute(singleGitHubRepoResponse)
         }
 

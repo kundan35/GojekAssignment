@@ -6,8 +6,8 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import com.google.gson.Gson
 import com.kotlin.gojek.assignment.data.RemoteConstants.BASE_URL
-import com.kotlin.gojek.assignment.data.TrendingRepository
-import com.kotlin.gojek.assignment.data.TrendingRepositoryImpl
+import com.kotlin.gojek.assignment.data.repository.TrendingRepository
+import com.kotlin.gojek.assignment.data.repository.TrendingRepositoryImpl
 import com.kotlin.gojek.assignment.data.source.AppDatabase
 import com.kotlin.gojek.assignment.data.source.remote.RetrofitService
 import dagger.Module
@@ -118,7 +118,11 @@ class NetworkModule {
         appDatabase: AppDatabase,
         retrofitService: RetrofitService
     ): TrendingRepository {
-        return TrendingRepositoryImpl(sharedPreference,appDatabase,retrofitService)
+        return TrendingRepositoryImpl(
+            sharedPreference,
+            appDatabase,
+            retrofitService
+        )
     }
 
 }

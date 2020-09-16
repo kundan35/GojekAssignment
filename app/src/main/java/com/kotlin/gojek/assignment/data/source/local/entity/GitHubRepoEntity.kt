@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class GitHubRepoEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val author: String,
+    var id: Long,
+    var author: String,
     val name: String,
     val description: String,
     val avatar: String,
